@@ -1,0 +1,31 @@
+﻿body {
+    margin:0px 0px 0px 0px!important
+}
+
+.TopHeader{
+    background-color: darkgreen!important
+}
+
+.LogoText{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:x-large;
+}
+
+.TopHeader {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:x-large;
+    background-color:grey;
+}
+
+.DetailBox {
+    content: box;
+    color: white;
+}
+
+.TextFont {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:14px;
+}
+
+.PageRedirect {
+}
