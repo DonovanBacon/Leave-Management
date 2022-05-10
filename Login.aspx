@@ -1,14 +1,13 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeBehind="Login.aspx"  %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Login.aspx.vb" Inherits="Login" %>
 
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta charset="utf-8" />
-    <title>Login</title> 
+   <title>Login</title> 
     
     <script src="JS/Login.js?1"></script>
     <link href="CSS/Login.css" rel="stylesheet" />
-
 </head>
 <body>
     <form id="form1" runat="server">   
