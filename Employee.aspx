@@ -8,9 +8,9 @@
     <title>Employee</title>
     <link href="CSS/Employee.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-image:url(Images/LeaveManageMentBK.jpg)">
     <form id="form1" runat="server">
-        <table style="width: 100%; height: 30px;" class="TopHeader">
+        <table style="width: 100%; height: 30px; background-color:transparent;" class="TopHeader">
             <tr>
                 <td style="width: 80%; padding-left: 10px">
                     <asp:Label runat="server" ID="lblLogoText" Text="Employee" CssClass="LogoText" ForeColor="White" Font-Bold="true" />
@@ -21,7 +21,7 @@
             </tr>
         </table>
 
-        <table style="width: 100%; padding-top: 15px; padding-left: 20px; background-color: white;">
+        <table style="width: 100%; padding-top: 15px; padding-left: 20px; background-color:transparent;">
             <tr>
                 <td style="width: 100%;">
                     <asp:Label runat="server" ID="lblHeader" Text="Apply for leave" CssClass="LogoText" ForeColor="Black" Font-Bold="true" />
@@ -29,11 +29,11 @@
             </tr>
             <tr>
                 <td style="width: 80%;">
-                    <div class="DetailBox" style="width: 99%;">
+                    <div class="DetailBox" style="width: 99%; background-color:transparent;">
                         <table style="width: 100%; padding: 5px;">
                             <tr>
-                                <td style="width: 70%;">
-                                    <table style="width: 100%;">
+                                <td style="width: 10%;">
+                                    <table style="width: 100%; background-color:#969696; padding:5px;">
                                         <tr>
                                             <td style="width: 100%; padding-top: 10px;">
                                                 <asp:Label runat="server" ID="lblName" ForeColor="Black" CssClass="TextFont" Text="Enter your first name" Font-Bold="true" />
@@ -41,7 +41,7 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:TextBox runat="server" ID="txtFirstName" Width="30%" CssClass="TextFont" ToolTip="enter your first name" />
+                                                <asp:TextBox runat="server" ID="txtFirstName" Width="95%" CssClass="TextFont" ToolTip="enter your first name" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -51,7 +51,7 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:TextBox runat="server" ID="txtLastName" Width="30%" CssClass="TextFont" ToolTip="Enter your last name" />
+                                                <asp:TextBox runat="server" ID="txtLastName" Width="95%" CssClass="TextFont" ToolTip="Enter your last name" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -61,7 +61,7 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:Calendar runat="server" ID="clndStartDate" CssClass="Calendar" Width="30%" ToolTip="Select the date from when you want to take leve" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
+                                                <asp:Calendar runat="server" ID="clndStartDate" CssClass="Calendar" Width="95%" ToolTip="Select the date from when you want to take leve" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -71,7 +71,7 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:Calendar runat="server" ID="clndEndDate" CssClass="TextFont" Width="30%" ToolTip="Select the date the day before your return" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
+                                                <asp:Calendar runat="server" ID="clndEndDate" CssClass="TextFont" Width="95%" ToolTip="Select the date the day before your return" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -81,7 +81,7 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:DropDownList runat="server" ID="lstbxTypeOfLeave" Width="20%" CssClass="Lstbx" ToolTip="Select your type of leave">
+                                                <asp:DropDownList runat="server" ID="lstbxTypeOfLeave" Width="95%" CssClass="Lstbx" ToolTip="Select your type of leave">
                                                     <asp:ListItem Text="Annual Leave" Value="1" Selected="True" />
                                                     <asp:ListItem Text="Family Responsibility Leave" Value="2" />
                                                     <asp:ListItem Text="Overtime Leave" Value="3" />
@@ -105,17 +105,17 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 10px;">
-                                                <asp:Label runat="server" ID="lblEnterReason" ForeColor="Black" CssClass="TextFont" Text="Reason" />
+                                                <asp:Label runat="server" ID="lblEnterReason" ForeColor="Black" CssClass="TextFont" Text="Reason" Font-Bold="true"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:TextBox runat="server" ID="txtReason" CssClass="TextFont" Width="30%" Height="60px" Wrap="true" Font-Bold="true" ToolTip="Enter a reason for your leave" TextMode="MultiLine" />
+                                                <asp:TextBox runat="server" ID="txtReason" CssClass="TextFont" Width="95%" Height="60px" Wrap="true" Font-Bold="true" ToolTip="Enter a reason for your leave" TextMode="MultiLine" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="width: 100%; padding-top: 10px;">
-                                                <asp:Button runat="server" ID="btnSubmit" CssClass="SubmitBtn" Text="SUBMIT" Width="10%" Height="35px" ToolTip="Submit your leave" />
+                                            <td style="width: 100%; padding-top: 10px; text-align:center;">
+                                                <asp:Button runat="server" ID="btnSubmit" CssClass="SubmitBtn" Text="SUBMIT" Width="50%" Height="35px" ToolTip="Submit your leave" />
                                             </td>
                                         </tr>
                                     </table>
@@ -136,6 +136,7 @@
                 </td>
             </tr>
         </table>
+                
     </form>
 </body>
 </html>
