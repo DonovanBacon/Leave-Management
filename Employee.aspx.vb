@@ -1,5 +1,18 @@
 ﻿Imports System.Data
 
+Imports System.Collections.Generic
+Imports System.IO
+
+Imports System.Threading
+
+Imports Google.Apis.Calendar.v3
+Imports Google.Apis.Calendar.v3.Data
+Imports Google.Apis.Calendar.v3.EventsResource
+Imports Google.Apis.Services
+Imports Google.Apis.Auth.OAuth2
+Imports Google.Apis.Util.Store
+Imports Google.Apis.Requests
+
 Partial Class Employee
     Inherits System.Web.UI.Page
     Private TotalLeaveDays As Integer = 7
@@ -106,10 +119,46 @@ Partial Class Employee
 
                 Dim ds As New DataSet
                 'Auditlog is being done in sql side after the insert to lessen the code on vb side
-                ds = mData.SubmitLeave(Session("User").User_FK, txtFirstName.Text, txtLastName.Text, Session("StartDate"), Session("EndDate"), txtReason.Text)
+                'Session("User").User_FK
+                ds = mData.SubmitLeave(1, txtFirstName.Text, txtLastName.Text, Session("StartDate").ToString, Session("EndDate").ToString, lstbxTypeOfLeave.SelectedItem.Text.ToString, txtReason.Text.ToString)
 
                 If ds.Tables(0)(0)(0).ToString = "successful" Then
                     MsgBox("Your leave has been submitted", vbOKOnly, "successful")
+
+
+                    Dim CalendarEvent As New Data.Event
+                    Dim StartDateTime As New Data.EventDateTime
+                    Dim A As Date
+                    Dim service As CalendarService
+
+                    Dim scopes As IList(Of String) = New List(Of String)()
+
+                    scopes.Add(CalendarService.Scope.Calendar)
+                    Dim credential As UserCredential
+                    Using stream As New FileStream("client_secrets.json", FileMode.Open, FileAccess.Read)
+                        credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets, scopes, "user", CancellationToken.None,
+                    New FileDataStore("Calendar.VB.Sample")).Result
+                    End Using
+
+                    Dim initializer As New BaseClientService.Initializer()
+                    initializer.HttpClientInitializer = credential
+                    initializer.ApplicationName = "VB.NET Calendar Sample"
+                    service = New CalendarService(initializer)
+
+                    'A = "15-OCT-2016 12:00"
+                    StartDateTime.DateTime = Session("StartDate")
+                    'Dim b As Date
+                    'b = A.AddDays(2)
+                    Dim EndDateTime As New Data.EventDateTime
+                    EndDateTime.DateTime = Session("EndDate")
+                    CalendarEvent.Start = StartDateTime
+                    CalendarEvent.End = EndDateTime
+                    CalendarEvent.Id = System.Guid.NewGuid.ToString
+                    CalendarEvent.Description = lstbxTypeOfLeave.SelectedItem.Text.ToString + " has been submitted."
+                    CalendarEvent.Attendees = New EventAttendee() {New EventAttendee() With {.Email = "DonovanBaconTest@gmail.com"}}
+
+                    service.Events.Insert(CalendarEvent, "primary").Execute()
                 Else
                     MsgBox("An error occurred, pelase try again", vbOKOnly, "Oops!")
                 End If
@@ -119,4 +168,6 @@ Partial Class Employee
             MsgBox("An error occurred, pelase try again", vbOKOnly, "Oops!")
         End Try
     End Sub
+
+
 End Class

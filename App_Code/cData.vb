@@ -10,7 +10,7 @@ Public Class cData
 
 #Region "Employee"
 
-    Function SubmitLeave(User_FK As Integer, FirstName As String, LastName As String, StartDate As String, EndDate As String, Optional Reason As String = "") As DataSet
+    Function SubmitLeave(User_FK As Integer, FirstName As String, LastName As String, StartDate As String, EndDate As String, LeaveType As String, Optional Reason As String = "") As DataSet
         Dim ds As New DataSet
 
         Using cn As New SqlConnection(ConfigurationManager.ConnectionStrings("ConString").ConnectionString)
@@ -22,12 +22,13 @@ Public Class cData
                 .CommandText = System.Configuration.ConfigurationManager.AppSettings("LeaveManagement") + ".dbo.SubmitLeave"
                 .CommandType = CommandType.StoredProcedure
 
-                .Parameters.AddWithValue("User_FK", User_FK)
-                .Parameters.AddWithValue("FirstName", FirstName)
-                .Parameters.AddWithValue("LastName", LastName)
-                .Parameters.AddWithValue("StartDate", StartDate)
-                .Parameters.AddWithValue("EndDate", EndDate)
-                .Parameters.AddWithValue("Reason", Reason)
+                .Parameters.AddWithValue("@User_FK", User_FK)
+                .Parameters.AddWithValue("@FirstName", FirstName)
+                .Parameters.AddWithValue("@LastName", LastName)
+                .Parameters.AddWithValue("@StartDate", StartDate)
+                .Parameters.AddWithValue("@EndDate", EndDate)
+                .Parameters.AddWithValue("@LeaveType", LeaveType)
+                .Parameters.AddWithValue("@Reason", Reason)
 
             End With
 
@@ -38,7 +39,7 @@ Public Class cData
                 Return ds
 
             Catch ex As Exception
-                'LogError("GetLeaveRequests", ex, "High", cmd)
+                'LogError("SubmitLeave", ex, "High", cmd)
                 Return Nothing
             End Try
         End Using
@@ -60,7 +61,7 @@ Public Class cData
                 .CommandText = System.Configuration.ConfigurationManager.AppSettings("LeaveManagement") + ".dbo.GetLeaveRequests"
                 .CommandType = CommandType.StoredProcedure
 
-                '.Parameters.AddWithValue("User_FK", User_FK)
+                '.Parameters.AddWithValue("@User_FK", User_FK)
 
             End With
 
