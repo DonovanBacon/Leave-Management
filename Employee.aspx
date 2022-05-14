@@ -32,7 +32,7 @@
                     <div class="DetailBox" style="width: 99%; background-color:transparent;">
                         <table style="width: 100%; padding: 5px;">
                             <tr>
-                                <td style="width: 10%;">
+                                <td style="width: 30%;">
                                     <table style="width: 100%; background-color:#969696; padding:5px;">
                                         <tr>
                                             <td style="width: 100%; padding-top: 10px;">
@@ -61,7 +61,8 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:Calendar runat="server" ID="clndStartDate" CssClass="Calendar" Width="95%" ToolTip="Select the date from when you want to take leve" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
+                                                <asp:Calendar runat="server" ID="clndStartDate" CssClass="Calendar" Width="95%" ToolTip="Select the date from when you want to take leve" 
+                                                    ForeColor="Black" DayHeaderStyle-ForeColor="Black" SelectedDayStyle-BackColor="ForestGreen" SelectedDayStyle-ForeColor="black"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -71,7 +72,8 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; padding-top: 5px;">
-                                                <asp:Calendar runat="server" ID="clndEndDate" CssClass="TextFont" Width="95%" ToolTip="Select the date the day before your return" ForeColor="Black" DayHeaderStyle-ForeColor="Black" />
+                                                <asp:Calendar runat="server" ID="clndEndDate" CssClass="TextFont" Width="95%" ToolTip="Select the date the day before your return"
+                                                    ForeColor="Black" DayHeaderStyle-ForeColor="Black" SelectedDayStyle-BackColor="ForestGreen" SelectedDayStyle-ForeColor="black"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -120,17 +122,114 @@
                                         </tr>
                                     </table>
                                 </td>
-                                <td style="width:30%;">
-                                    <table>
+                                <td style="width:20%; float:right;">
+                                    <table style="width:100%;">
                                         <tr>
-                                            <td>
-
+                                            <td style="width:100%; text-align:left;">
+                                                 <asp:Label runat="server" ID="lblLeaveBalanceHeader" Text="Leave Balances" CssClass="LogoText" ForeColor="Black" Font-Bold="true" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:80%; background-color:#404040; border-right-style:solid; border-right-width:1px; border-right-color:white;">
+                                                            <asp:Label runat="server" ID="Label1" Text="Leave Type" CssClass="LeaveBalanceFont" ForeColor="white" Font-Bold="true" />
+                                                        </td>
+                                                        <td style="width:20%; background-color:#404040;">
+                                                            <asp:Label runat="server" ID="Label2" Text="Balance" CssClass="LeaveBalanceFont" ForeColor="white" Font-Bold="true" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label3" Text="Annual Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblAnnualBalance" Text="5" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                       <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label5" Text="Family Responsibility Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblfamLeave" Text="2" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label7" Text="Overtime Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblOverTime" Text="1" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label9" Text="Sick Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblSick" Text="18" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label11" Text="Travel Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblTravel" Text="0" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:100%; text-align:left;">
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                         <td style="width:80%; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px;">
+                                                            <asp:Label runat="server" ID="Label13" Text="Unpaid Leave" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                        <td style="width:20%; text-align:center; border-bottom-style:solid; border-bottom-color:#404040; border-bottom-width:1px; border-left-style:solid; border-left-color:#404040; border-left-width:1px;">
+                                                            <asp:Label runat="server" ID="lblUnpaid" Text="0" CssClass="LeaveBalanceFont" ForeColor="black" Font-Bold="true"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-
                         </table>
                     </div>
                 </td>

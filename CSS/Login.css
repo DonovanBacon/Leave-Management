@@ -1,8 +1,36 @@
 ﻿body {
-    margin:0px 0px 0px 0px!important
+    margin: 0px 0px 0px 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.LoginBox{
-    content:box;
-    align-content:center!important;
+.DetailBox {
+    content: box;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.LoginBtn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #bae0ba !important;
+}
+
+    .LoginBtn:hover {
+        cursor: pointer;
+        background-color: #94b394 !important;
+    }
+
+.TextFont {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+.LogoText {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
 }

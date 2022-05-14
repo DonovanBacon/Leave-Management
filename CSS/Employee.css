@@ -41,9 +41,10 @@
     border-width:1px;
     background-color: #bae0ba!important;
 }
-.SubmitBtn:hover{
-    cursor: pointer;
-}
+    .SubmitBtn:hover {
+        cursor: pointer;
+        background-color: #94b394 !important;
+    }
 
 .Lstbx {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -64,6 +65,12 @@
     font-size: 12px;
 }
 
-.PageRedirect:hover {
-    cursor: pointer;
+    .PageRedirect:hover {
+        cursor: pointer;
+        background-color: #bae0ba !important;
+    }
+
+.LeaveBalanceFont {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:14px
 }
