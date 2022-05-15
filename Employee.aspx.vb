@@ -15,7 +15,6 @@ Imports Google.Apis.Requests
 
 Partial Class Employee
     Inherits System.Web.UI.Page
-    Private TotalLeaveDays As Integer = 7
     Private mData As New cData
 
     Private Sub clndStartDate_SelectionChanged(sender As Object, e As EventArgs) Handles clndStartDate.SelectionChanged
@@ -120,20 +119,6 @@ Partial Class Employee
         End Try
     End Sub
 
-    'Private Sub lstbxTypeOfLeave_TextChanged(sender As Object, e As EventArgs) Handles lstbxTypeOfLeave.TextChanged
-    '    Try
-
-    '        Session("TypeLeave") = lstbxTypeOfLeave.SelectedItem.Text
-    '        lblLeavePreview.Text = "Remaining " + lstbxTypeOfLeave.SelectedItem.Text.ToString + ": " + Session("LeavePeriod").ToString
-    '        lblTotalLeaveDays.Text = "You are submitting " + Session("LeaveDif").ToString + " days of  " + lstbxTypeOfLeave.SelectedItem.Text.ToString
-
-
-    '    Catch ex As Exception
-    '        'Audit Log to capture exception error and log to DB
-    '    End Try
-    'End Sub
-
-
     Protected Sub btnAdmin_Click(sender As Object, e As EventArgs)
         Try
             Response.Redirect("Employer.aspx")
@@ -168,16 +153,32 @@ Partial Class Employee
 
                 Dim ds As New DataSet
                 'Auditlog is being done in sql side after the insert to lessen the code on vb side
-                'Session("User").User_FK
 
                 If Session("LeavePeriod").ToString.Contains("-") Then
                     Session("LeavePeriod") = 0
                 End If
-                ds = mData.SubmitLeave(Session("User").User_FK, txtFirstName.Text, txtLastName.Text, Session("StartDate").ToString, Session("EndDate").ToString, lstbxTypeOfLeave.SelectedItem.Text.ToString, Session("LeavePeriod"), txtReason.Text.ToString)
+                ds = mData.SubmitLeave(Session("User").User_FK, txtFirstName.Text, txtLastName.Text, Session("StartDate").ToString, Session("EndDate").ToString, lstbxTypeOfLeave.SelectedItem.Text.ToString, Session("LeaveDif"), txtReason.Text.ToString)
 
                 If ds.Tables(0)(0)(0).ToString = "successful" Then
                     MsgBox("Your leave has been submitted", vbOKOnly, "successful")
 
+                    Dim ds1 As New DataSet
+                    ds1 = mData.GetUserSickLeave(Session("User").User_Fk)
+
+                    lblAnnualBalance.Text = ds1.Tables(0)(0)("Annual_Leave").ToString
+                    lblfamLeave.Text = ds1.Tables(0)(0)("Fam_Respon_leave").ToString
+                    lblOverTime.Text = ds1.Tables(0)(0)("Overtime_Leave").ToString
+                    lblSick.Text = ds1.Tables(0)(0)("Sick_Leave").ToString
+                    lblTravel.Text = ds1.Tables(0)(0)("Travel_Leave").ToString
+                    lblUnpaid.Text = ds1.Tables(0)(0)("Unpaid_Leave").ToString
+
+                    txtFirstName.Text = ""
+                    txtLastName.Text = ""
+                    clndStartDate.SelectedDates.Clear()
+                    clndEndDate.SelectedDates.Clear()
+                    txtReason.Text = ""
+                    lblLeavePreview.Text = ""
+                    lblTotalLeaveDays.Text = ""
 
                     'Dim CalendarEvent As New Data.Event
                     'Dim StartDateTime As New Data.EventDateTime
@@ -236,6 +237,15 @@ Partial Class Employee
                 lblSick.Text = ds.Tables(0)(0)("Sick_Leave").ToString
                 lblTravel.Text = ds.Tables(0)(0)("Travel_Leave").ToString
                 lblUnpaid.Text = ds.Tables(0)(0)("Unpaid_Leave").ToString
+
+                'Use this for the demo when not able to connect to my DB
+
+                'lblAnnualBalance.Text = "5"
+                'lblfamLeave.Text = "3"
+                'lblOverTime.Text = "1"
+                'lblSick.Text = "16"
+                'lblTravel.Text = "0"
+                'lblUnpaid.Text = "0"
 
             End If
 

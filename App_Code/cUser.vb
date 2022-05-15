@@ -23,5 +23,15 @@ Public Class cUser
             LastName = item("Last_Name").ToString
             Password = item("Password").ToString
         Next
+
+        'Use this for the demo when not able to connect to my DB
+
+        'User_FK = 1
+        'Username = "Donovan"
+        'Email = "DonovanBaconTest@gmail.com"
+        'FullName = "Donovan Bacon"
+        'FirstName = "Donovan"
+        'LastName = "Bacon"
+        'Password = "Test123!"
     End Sub
 End Class

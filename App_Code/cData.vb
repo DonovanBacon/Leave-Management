@@ -64,6 +64,34 @@ Public Class cData
         End Using
     End Function
 
+    Function GetAuditLogs() As DataSet
+        Dim ds As New DataSet
+
+        Using cn As New SqlConnection(ConfigurationManager.ConnectionStrings("ConStringAdmin").ConnectionString)
+            Dim cmd As SqlCommand = New SqlCommand
+            With cmd
+
+                .Connection = cn
+                .Connection.Open()
+                .CommandText = System.Configuration.ConfigurationManager.AppSettings("Admin") + ".dbo.GetAuditLog"
+                .CommandType = CommandType.StoredProcedure
+
+
+            End With
+
+            Try
+
+                Dim adapt As New SqlDataAdapter(cmd)
+                adapt.Fill(ds)
+                Return ds
+
+            Catch ex As Exception
+                'LogError("GetAuditLog", ex, "High", cmd)
+                Return Nothing
+            End Try
+        End Using
+    End Function
+
 #End Region
 
 #Region "Employee"
