@@ -5,13 +5,13 @@ Imports System.IO
 
 Imports System.Threading
 
-Imports Google.Apis.Calendar.v3
-Imports Google.Apis.Calendar.v3.Data
-Imports Google.Apis.Calendar.v3.EventsResource
-Imports Google.Apis.Services
-Imports Google.Apis.Auth.OAuth2
-Imports Google.Apis.Util.Store
-Imports Google.Apis.Requests
+'Imports Google.Apis.Calendar.v3
+'Imports Google.Apis.Calendar.v3.Data
+'Imports Google.Apis.Calendar.v3.EventsResource
+'Imports Google.Apis.Services
+'Imports Google.Apis.Auth.OAuth2
+'Imports Google.Apis.Util.Store
+'Imports Google.Apis.Requests
 
 Partial Class Employee
     Inherits System.Web.UI.Page
